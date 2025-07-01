@@ -8,7 +8,13 @@ set -e
 # 环境准备：安装常用渗透/运维工具
 prepare_env() {
   echo "[+] 正在检测并安装常用工具..."
-  PKGS=(curl wget git vim unzip net-tools lsof python3 python3-pip docker docker-compose)
+  PKGS=(curl wget git vim unzip net-tools lsof python3 python3-pip docker docker-compose wireshark tshark tcpdump gpg ncat openssl binwalk steghide hashcat)
+  # 说明：
+  # wireshark/tshark/tcpdump 抓包分析
+  # gpg/openssl 解密解码
+  # ncat 网络调试
+  # binwalk/steghide 文件分析/隐写
+  # hashcat 密码破解
   if [ -f /etc/debian_version ]; then
     sudo apt-get update -y
     for pkg in "${PKGS[@]}"; do
@@ -41,6 +47,9 @@ TOOL=$1
 SCRIPT_DIR=$(dirname "$0")/scripts
 
 case $TOOL in
+  defense)
+    bash "$SCRIPT_DIR/install_defense_tools.sh"
+    ;;
   xray)
     bash "$SCRIPT_DIR/install_xray.sh"
     ;;
