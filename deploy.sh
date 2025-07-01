@@ -50,6 +50,12 @@ case $TOOL in
   dnslog)
     bash "$SCRIPT_DIR/install_dnslog.sh"
     ;;
+  awvs)
+    bash "$SCRIPT_DIR/install_awvs.sh"
+    ;;
+  pentest)
+    bash "$SCRIPT_DIR/install_pentest_tools.sh"
+    ;;
   *)
     echo "未知工具: $TOOL"
     exit 1

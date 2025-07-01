@@ -1,7 +1,7 @@
 # VPS 快速部署脚本仓库
 
 本仓库用于一键部署常用的 VPS 工具，包括：
-- Xray（翻墙工具）
+- Clash Verge（翻墙工具）
 - FRP（内网穿透/隧道工具）
 - DNSLog 平台（安全测试平台）
 
@@ -13,7 +13,7 @@
    ```
 2. 选择要部署的工具，例如：
    ```bash
-   ./deploy.sh xray
+   ./deploy.sh clash
    ./deploy.sh frp
    ./deploy.sh dnslog
    ```
