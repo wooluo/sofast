@@ -15,7 +15,11 @@
    ```bash
    chmod +x deploy.sh
    ```
-2. 选择要部署的工具，例如：
+2. 查看帮助信息：
+   ```bash
+   ./deploy.sh -h
+   ```
+3. 选择要部署的工具，例如：
    ```bash
    ./deploy.sh clash
    ./deploy.sh frp
@@ -23,6 +27,7 @@
    ./deploy.sh awvs
    ./deploy.sh pentest      # 一键安装渗透测试常用工具
    ./deploy.sh defense      # 一键安装防守方常用分析工具
+   ./deploy.sh yak          # 安装并运行 YakLang 及相关服务
    ```
 
 ## 目录结构
@@ -35,6 +40,7 @@
 - `scripts/install_pentest_tools.sh`    渗透测试工具一键安装
 - `scripts/install_defense_tools.sh`    防守方分析工具一键安装
 - `scripts/install_yak.sh`              YakLang 一键安装
+- `scripts/install_and_run_yak.sh`      YakLang 安装与自动运行脚本
 - `scripts/install_fscan.sh`            Fscan 一键安装
 - `scripts/install_afrog.sh`            Afrog 一键安装
 - `scripts/install_nuclei.sh`           Nuclei 一键安装及规则拉取
@@ -46,6 +52,7 @@
 - 各工具脚本均支持主流 Linux 发行版，部分工具支持自动拉取规则或字典。
 - 防守方工具集成抓包、解密、隐写、取证、YARA等常用分析工具。
 - 如需 Windows 版本或更多自动化脚本，请参考 scripts 目录下相关 .bat 文件。
+- 运行 `./deploy.sh -h` 可随时查看所有支持的工具及用法示例。
 
 ---
 

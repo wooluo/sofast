@@ -5,6 +5,25 @@
 
 set -e
 
+show_help() {
+  echo "用法: $0 [工具名]"
+  echo "支持的工具名："
+  echo "  clash         部署 Clash Verge (翻墙工具)"
+  echo "  frp           部署 FRP (内网穿透)"
+  echo "  dnslog        部署 DNSLog 平台"
+  echo "  awvs          部署 AWVS 漏洞扫描平台"
+  echo "  pentest       一键安装渗透测试常用工具"
+  echo "  defense       一键安装防守方常用分析工具"
+  echo "  yak           安装并运行 YakLang 及相关服务"
+  echo "  xray          部署 Xray (如有脚本)"
+  echo "  ...           其他脚本可在 scripts/ 目录扩展"
+  echo ""
+  echo "示例:"
+  echo "  ./deploy.sh clash"
+  echo "  ./deploy.sh pentest"
+  echo "  ./deploy.sh defense"
+}
+
 # 环境准备：安装常用渗透/运维工具
 prepare_env() {
   echo "[+] 正在检测并安装常用工具..."
@@ -38,9 +57,9 @@ prepare_env() {
 
 prepare_env
 
-if [ $# -lt 1 ]; then
-  echo "用法: $0 [xray|frp|dnslog]"
-  exit 1
+if [ $# -lt 1 ] || [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
+  show_help
+  exit 0
 fi
 
 TOOL=$1
@@ -65,8 +84,15 @@ case $TOOL in
   pentest)
     bash "$SCRIPT_DIR/install_pentest_tools.sh"
     ;;
+  yak)
+    bash "$SCRIPT_DIR/install_and_run_yak.sh"
+    ;;
+  clash)
+    echo "[!] Clash Verge 脚本待集成，请参考 README 或 scripts/ 目录。"
+    ;;
   *)
     echo "未知工具: $TOOL"
+    show_help
     exit 1
     ;;
 esac
